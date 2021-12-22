@@ -107,9 +107,7 @@ public class HatredSystem : MonoBehaviour
         //若找不到则返还null
         if (!targetInd)
         {
-            AddHateValue(2);
-            targetInd = Factory.GetIndividual(2);
-            return targetInd.transform;
+            return null;
         }
 
         if (!targetInd.enabled)
@@ -151,7 +149,11 @@ public class HatredSystem : MonoBehaviour
         for (int i = 0; i < HLkeys.Count; i++)
         {
             //对基地的仇恨不用减少S
-            if (keyArray[i].ID == 2) continue;
+            if (keyArray[i].ID == 2)
+            {
+                continue;
+            }
+                
 
             //减少固定
             hatredMap[keyArray[i]] -= hateValueDecrement;
@@ -162,7 +164,10 @@ public class HatredSystem : MonoBehaviour
             {
                 Debug.Log("Like!!!");
                 hatredMap.Remove(keyArray[i]);
-                
+                if (hatredMap.Count == 0) 
+                {
+                    AddHateValue(2);
+                }    
             }
         }
 

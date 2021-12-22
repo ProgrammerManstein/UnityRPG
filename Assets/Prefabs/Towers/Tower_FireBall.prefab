@@ -114,7 +114,7 @@ MonoBehaviour:
   speed: 1
   attackDistance: 1
   recoverRate: 0
-  hatredValue: 0
+  hatredValue: 10
   power: 1
   movable: 1
   attackable: 1
