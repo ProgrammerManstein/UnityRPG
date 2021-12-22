@@ -47,7 +47,13 @@ public class BulletTriggerEvent : MonoBehaviour
         else
         {
             Factory.TraversalIndividualsInCircle(
-             (individual) => { tower.GetComponent<MessageSystem>().SendMessage(2, individual.ID, buffID); }
+             (individual) =>
+             {
+                 if (individual.power != Individual.Power.Human)
+                 {
+                     tower.GetComponent<MessageSystem>().SendMessage(1, individual.ID, tower.attack);
+                 }
+             }
                 , transform.position, range);
         }
 

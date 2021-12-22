@@ -59,8 +59,8 @@ public class MoneyManager : MonoBehaviour {
         //只有怪物势力个体增加金币
         if (Factory.GetIndividual(individualID).power != Individual.Power.Monster) return;
 
-        //TODO:暂定每个怪物金币 12
-        AddCash(12);
+        //TODO:暂定每个怪物金币 5
+        AddCash(5);
     }
 
 	#endregion

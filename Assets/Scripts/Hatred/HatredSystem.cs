@@ -77,7 +77,8 @@ public class HatredSystem : MonoBehaviour
         }
         else
         {
-            hatredMap[HateSource] += HateSource.hatredValue;
+            if(hatredMap[HateSource]<=10)
+                hatredMap[HateSource] += HateSource.hatredValue;
         }
 
         //此处更新行为树的最新目标

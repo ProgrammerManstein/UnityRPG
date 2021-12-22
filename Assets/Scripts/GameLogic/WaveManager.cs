@@ -40,7 +40,7 @@ public class WaveManager : MonoBehaviour
     {
         alreadyStart = false;
         //关卡奖励
-        moneyManager.AddCash(100);
+        moneyManager.AddCash(50);
         waveEndPanel.Play();
         waveEndText.text = "第" + waveIndex + "波";
 

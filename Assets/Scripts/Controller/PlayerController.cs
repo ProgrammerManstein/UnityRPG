@@ -298,7 +298,7 @@ public class PlayerController : BaseIndividualController{
     {
         selfIndividual.attack =  selfIndividual.attack+1;
         if(selfIndividual.health<selfIndividual.maxHealth)
-            selfIndividual.health = selfIndividual.health + 2;
+            selfIndividual.health = selfIndividual.health + 5;
     }
 
 }

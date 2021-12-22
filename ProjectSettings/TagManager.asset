@@ -10,6 +10,7 @@ TagManager:
   - Manager
   - TowerBase
   - Effects
+  - Base
   layers:
   - Default
   - TransparentFX

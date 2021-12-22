@@ -10,6 +10,7 @@ public class TowerManager : MonoBehaviour
     //塔个体对象prefab
     public List<GameObject> _towerPrefabs;
 
+    public Dictionary<GameObject, GameObject> base2tower = new Dictionary<GameObject, GameObject>();
     //游戏场景里的塔基
     private GameObject[] _towerBases;
 
@@ -18,6 +19,9 @@ public class TowerManager : MonoBehaviour
 
     //金钱
     private MoneyManager _moneyManager;
+
+    //消息系统
+    private MessageSystem messageSystem;
 
     //塔基对应是否有塔
     private Dictionary<GameObject, bool> _towerBaseHasTower = new Dictionary<GameObject, bool>();
@@ -43,7 +47,8 @@ public class TowerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        messageSystem = GetComponent<MessageSystem>();   
+        messageSystem.registerDieEvent(RecoverTowerBase);
     }
 
     // Update is called once per frame
@@ -78,6 +83,22 @@ public class TowerManager : MonoBehaviour
             return false;
         }
 
+        switch (towerIndex)
+        {
+            case 0:
+                if(_moneyManager.Cash<50)
+                    return false;
+                break;
+            case 1:
+                if (_moneyManager.Cash < 100)
+                    return false;
+                break;
+            case 2:
+                if (_moneyManager.Cash < 50)
+                    return false;
+                break;
+        }
+
         return true;
     }
 
@@ -105,7 +126,25 @@ public class TowerManager : MonoBehaviour
         }
 
         _towerBaseHasTower[TargetTowerBase] = true;
-        Instantiate(_towerPrefabs[towerIndex], TargetTowerBase.transform);
+        var tower = Instantiate(_towerPrefabs[towerIndex], TargetTowerBase.transform);
+        base2tower.Add(tower, TargetTowerBase);
         Logger.Log("Succeessfully Build A Tower.", LogType.Tower);
     }
+
+    public void DestroyTower(GameObject t)
+    {
+
+        _towerBaseHasTower[t] = false;
+        Logger.Log("Succeessfully recover A TowerBase.", LogType.Tower);
+    }
+    public void RecoverTowerBase(int individualID)
+    {
+        //只有人类势力个体恢复塔基
+        if (Factory.GetIndividual(individualID).power != Individual.Power.Human) return;
+
+        //恢复塔基
+        DestroyTower(base2tower[Factory.GetIndividual(individualID).gameObject]);
+    }
+
+
 }

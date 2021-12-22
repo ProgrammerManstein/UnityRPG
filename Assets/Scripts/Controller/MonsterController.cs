@@ -117,7 +117,7 @@ public class MonsterController : BaseIndividualController
         var target = hatredSystem.GetMostHatedTarget();
         //若存在仇恨目标且距离在一定范围
         //TODO
-        if (target && (target.position-transform.position).sqrMagnitude < 3.0f * transform.localScale.x * transform.localScale.x)
+        if (target && (target.position-transform.position).sqrMagnitude < 5.0f * transform.localScale.x * transform.localScale.x)
         {
             //攻击之
             Attack(target.GetComponent<Individual>());
