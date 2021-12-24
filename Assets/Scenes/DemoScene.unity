@@ -16760,6 +16760,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Base
       objectReference: {fileID: 0}
+    - target: {fileID: 7637720592244317725, guid: aa7ae565a9a83e34cacfb4ecb7de90d6,
+        type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637720592244317725, guid: aa7ae565a9a83e34cacfb4ecb7de90d6,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7637720593068013203, guid: aa7ae565a9a83e34cacfb4ecb7de90d6,
         type: 3}
       propertyPath: m_LocalPosition.x

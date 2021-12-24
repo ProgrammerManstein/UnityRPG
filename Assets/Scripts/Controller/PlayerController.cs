@@ -260,7 +260,7 @@ public class PlayerController : BaseIndividualController{
     {
         selfIndividual.HealthChange(-damage);
         //生命值少于0，调用死亡行为
-        if (selfIndividual.health < 0)
+        if (selfIndividual.health <= 0)
         {
             Die();
         }

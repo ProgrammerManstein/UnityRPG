@@ -101,7 +101,7 @@ MonoBehaviour:
   health: 50
   maxHealth: 50
   attack: 20
-  attackSpeed: 0.2
+  attackSpeed: 0.3
   speed: 1
   attackDistance: 1
   recoverRate: 0
